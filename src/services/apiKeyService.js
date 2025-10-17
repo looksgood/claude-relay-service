@@ -1130,7 +1130,7 @@ class ApiKeyService {
       this._publishBillingEvent({
         keyId,
         keyName: keyData?.name,
-        userId: keyData?.userId,
+        apiKey: keyData?.apiKey,
         model,
         inputTokens,
         outputTokens,
