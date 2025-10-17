@@ -14286,6 +14286,54 @@
         "mode": "audio_transcription",
         "output_cost_per_second": 0.0
     },
+    "glm-4.6": {
+        "litellm_provider": "zhipuai",
+        "max_input_tokens": 200000,
+        "max_output_tokens": 200000,
+        "max_tokens": 200000,
+        "mode": "chat",
+        "source": "https://open.bigmodel.cn/pricing",
+        "supports_function_calling": true,
+        "supports_reasoning": true,
+        "supports_tool_choice": true,
+        "tiered_pricing": [
+            {
+                "cache_read_input_token_cost": 4e-07,
+                "input_cost_per_token": 2e-06,
+                "output_cost_per_token": 8e-06,
+                "range": [
+                    0,
+                    32000.0
+                ],
+                "output_range": [
+                    0,
+                    200.0
+                ]
+            },
+            {
+                "cache_read_input_token_cost": 6e-07,
+                "input_cost_per_token": 3e-06,
+                "output_cost_per_token": 1.4e-05,
+                "range": [
+                    0,
+                    32000.0
+                ],
+                "output_range": [
+                    200.0,
+                    null
+                ]
+            },
+            {
+                "cache_read_input_token_cost": 8e-07,
+                "input_cost_per_token": 4e-06,
+                "output_cost_per_token": 1.6e-05,
+                "range": [
+                    32000.0,
+                    200000.0
+                ]
+            }
+        ]
+    },
     "hd/1024-x-1024/dall-e-3": {
         "input_cost_per_pixel": 7.629e-08,
         "litellm_provider": "openai",
@@ -14760,6 +14808,34 @@
         "supports_reasoning": true,
         "supports_system_messages": true,
         "supports_tool_choice": true
+    },
+    "kimi-k2-0905-preview": {
+        "cache_read_input_token_cost": 1.5e-07,
+        "input_cost_per_token": 6e-07,
+        "litellm_provider": "moonshot",
+        "max_input_tokens": 262144,
+        "max_output_tokens": 262144,
+        "max_tokens": 262144,
+        "mode": "chat",
+        "output_cost_per_token": 2.5e-06,
+        "source": "https://platform.moonshot.ai/docs/pricing/chat#generation-model-kimi-k2",
+        "supports_function_calling": true,
+        "supports_tool_choice": true,
+        "supports_web_search": true
+    },
+    "kimi-k2-turbo-preview": {
+        "cache_read_input_token_cost": 6e-07,
+        "input_cost_per_token": 2.4e-06,
+        "litellm_provider": "moonshot",
+        "max_input_tokens": 262144,
+        "max_output_tokens": 262144,
+        "max_tokens": 262144,
+        "mode": "chat",
+        "output_cost_per_token": 1e-05,
+        "source": "https://platform.moonshot.ai/docs/pricing/chat#generation-model-kimi-k2",
+        "supports_function_calling": true,
+        "supports_tool_choice": true,
+        "supports_web_search": true
     },
     "lambda_ai/deepseek-r1-0528": {
         "input_cost_per_token": 2e-07,
@@ -18908,6 +18984,117 @@
         "max_tokens": 12000,
         "mode": "chat",
         "output_cost_per_token": 2.8e-07
+    },
+    "qwen3-max": {
+        "litellm_provider": "dashscope",
+        "max_input_tokens": 258048,
+        "max_output_tokens": 65536,
+        "max_tokens": 262144,
+        "mode": "chat",
+        "source": "https://help.aliyun.com/zh/model-studio/getting-started/models",
+        "supports_function_calling": true,
+        "supports_reasoning": true,
+        "supports_tool_choice": true,
+        "tiered_pricing": [
+            {
+                "input_cost_per_token": 6e-06,
+                "output_cost_per_token": 2.4e-05,
+                "range": [
+                    0,
+                    32000.0
+                ]
+            },
+            {
+                "input_cost_per_token": 1e-05,
+                "output_cost_per_token": 4e-05,
+                "range": [
+                    32000.0,
+                    128000.0
+                ]
+            },
+            {
+                "input_cost_per_token": 1.5e-05,
+                "output_cost_per_token": 6e-05,
+                "range": [
+                    128000.0,
+                    252000.0
+                ]
+            }
+        ]
+    },
+    "qwen3-max-2025-09-23": {
+        "litellm_provider": "dashscope",
+        "max_input_tokens": 258048,
+        "max_output_tokens": 65536,
+        "max_tokens": 262144,
+        "mode": "chat",
+        "source": "https://help.aliyun.com/zh/model-studio/getting-started/models",
+        "supports_function_calling": true,
+        "supports_reasoning": true,
+        "supports_tool_choice": true,
+        "tiered_pricing": [
+            {
+                "input_cost_per_token": 6e-06,
+                "output_cost_per_token": 2.4e-05,
+                "range": [
+                    0,
+                    32000.0
+                ]
+            },
+            {
+                "input_cost_per_token": 1e-05,
+                "output_cost_per_token": 4e-05,
+                "range": [
+                    32000.0,
+                    128000.0
+                ]
+            },
+            {
+                "input_cost_per_token": 1.5e-05,
+                "output_cost_per_token": 6e-05,
+                "range": [
+                    128000.0,
+                    252000.0
+                ]
+            }
+        ]
+    },
+    "qwen3-max-preview": {
+        "litellm_provider": "dashscope",
+        "max_input_tokens": 258048,
+        "max_output_tokens": 65536,
+        "max_tokens": 262144,
+        "mode": "chat",
+        "source": "https://help.aliyun.com/zh/model-studio/getting-started/models",
+        "supports_function_calling": true,
+        "supports_reasoning": true,
+        "supports_tool_choice": true,
+        "tiered_pricing": [
+            {
+                "input_cost_per_token": 6e-06,
+                "output_cost_per_token": 2.4e-05,
+                "range": [
+                    0,
+                    32000.0
+                ]
+            },
+            {
+                "input_cost_per_token": 1e-05,
+                "output_cost_per_token": 4e-05,
+                "range": [
+                    32000.0,
+                    128000.0
+                ]
+            },
+            {
+                "input_cost_per_token": 1.5e-05,
+                "output_cost_per_token": 6e-05,
+                "range": [
+                    128000.0,
+                    252000.0
+                ]
+            }
+        ]
     },
     "qwen.qwen3-coder-480b-a35b-v1:0": {
         "input_cost_per_token": 2.2e-07,
