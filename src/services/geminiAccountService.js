@@ -1081,11 +1081,17 @@ async function loadCodeAssist(client, projectId = null, proxyConfig = null) {
   }
 
   if (proxyAgent) {
+    tokenInfoConfig.httpAgent = proxyAgent
     tokenInfoConfig.httpsAgent = proxyAgent
+    tokenInfoConfig.proxy = false
   }
 
-  await axios(tokenInfoConfig)
-  logger.info('📋 tokeninfo 接口验证成功')
+  try {
+    await axios(tokenInfoConfig)
+    logger.info('📋 tokeninfo 接口验证成功')
+  } catch (error) {
+    logger.info('tokeninfo 接口获取失败', error)
+  }
 
   const userInfoConfig = {
     url: 'https://www.googleapis.com/oauth2/v2/userinfo',
@@ -1098,11 +1104,17 @@ async function loadCodeAssist(client, projectId = null, proxyConfig = null) {
   }
 
   if (proxyAgent) {
+    userInfoConfig.httpAgent = proxyAgent
     userInfoConfig.httpsAgent = proxyAgent
+    userInfoConfig.proxy = false
   }
 
-  await axios(userInfoConfig)
-  logger.info('📋 userinfo 接口获取成功')
+  try {
+    await axios(userInfoConfig)
+    logger.info('📋 userinfo 接口获取成功')
+  } catch (error) {
+    logger.info('userinfo 接口获取失败', error)
+  }
 
   // 创建ClientMetadata
   const clientMetadata = {
@@ -1138,7 +1150,9 @@ async function loadCodeAssist(client, projectId = null, proxyConfig = null) {
 
   // 添加代理配置
   if (proxyAgent) {
+    axiosConfig.httpAgent = proxyAgent
     axiosConfig.httpsAgent = proxyAgent
+    axiosConfig.proxy = false
     logger.info(
       `🌐 Using proxy for Gemini loadCodeAssist: ${ProxyHelper.getProxyDescription(proxyConfig)}`
     )
@@ -1212,7 +1226,9 @@ async function onboardUser(client, tierId, projectId, clientMetadata, proxyConfi
   // 添加代理配置
   const proxyAgent = ProxyHelper.createProxyAgent(proxyConfig)
   if (proxyAgent) {
+    baseAxiosConfig.httpAgent = proxyAgent
     baseAxiosConfig.httpsAgent = proxyAgent
+    baseAxiosConfig.proxy = false
     logger.info(
       `🌐 Using proxy for Gemini onboardUser: ${ProxyHelper.getProxyDescription(proxyConfig)}`
     )
@@ -1343,7 +1359,9 @@ async function countTokens(client, contents, model = 'gemini-2.0-flash-exp', pro
   // 添加代理配置
   const proxyAgent = ProxyHelper.createProxyAgent(proxyConfig)
   if (proxyAgent) {
+    axiosConfig.httpAgent = proxyAgent
     axiosConfig.httpsAgent = proxyAgent
+    axiosConfig.proxy = false
     logger.info(
       `🌐 Using proxy for Gemini countTokens: ${ProxyHelper.getProxyDescription(proxyConfig)}`
     )
@@ -1418,7 +1436,9 @@ async function generateContent(
   // 添加代理配置
   const proxyAgent = ProxyHelper.createProxyAgent(proxyConfig)
   if (proxyAgent) {
+    axiosConfig.httpAgent = proxyAgent
     axiosConfig.httpsAgent = proxyAgent
+    axiosConfig.proxy = false
     logger.info(
       `🌐 Using proxy for Gemini generateContent: ${ProxyHelper.getProxyDescription(proxyConfig)}`
     )
@@ -1492,7 +1512,9 @@ async function generateContentStream(
   // 添加代理配置
   const proxyAgent = ProxyHelper.createProxyAgent(proxyConfig)
   if (proxyAgent) {
+    axiosConfig.httpAgent = proxyAgent
     axiosConfig.httpsAgent = proxyAgent
+    axiosConfig.proxy = false
     logger.info(
       `🌐 Using proxy for Gemini streamGenerateContent: ${ProxyHelper.getProxyDescription(proxyConfig)}`
     )
