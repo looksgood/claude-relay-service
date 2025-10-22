@@ -1388,7 +1388,6 @@ class ApiKeyService {
   // 🔔 发布计费事件（内部方法）
   async _publishBillingEvent(eventData) {
     try {
-      
       await billingEventPublisher.publishBillingEvent(eventData)
     } catch (error) {
       // 静默失败，不影响主流程
