@@ -28,9 +28,9 @@ function getAsctime() {
  */
 class BillingEventPublisher {
   constructor() {
-    this.streamKey = 'billing:events'
-    this.maxLength = 100000 // 保留最近 10 万条事件
-    this.enabled = process.env.BILLING_EVENTS_ENABLED !== 'false' // 默认开启
+    this.streamKey = process.env.BILLING_STREAM_KEY || 'billing:events'
+    this.maxLength = parseInt(process.env.BILLING_STREAM_MAX_LENGTH) || 100000 // 保留最近 10 万条事件
+    this.enabled = process.env.BILLING_EVENTS_ENABLED === 'true' // 默认禁用，需显式启用
   }
 
   /**
